@@ -4,7 +4,7 @@ This library is an implementation of a registry contract that supports the Polyg
 
 ## Overview
 
-The Polygon registry contract acts as a public ledger, where the Polygon-Identity specified Decentralised Identifiers will be logged. The specifications related to polygon DID method are mentioned in the      document. A DID generated using the Polygon DID generator, can be stored and managed on the ledger using this contract library.
+The Polygon registry contract acts as a public ledger, where the Polygon-Identity specified Decentralised Identifiers will be logged. The specifications related to polygon DID method are mentioned in the [Polygon Method Specification](https://github.com/ayanworks/polygon-did-method-spec) document. A DID generated using the Polygon DID generator, can be stored and managed on the ledger using this contract library.
 
 ## Methods
 
@@ -22,7 +22,7 @@ Using ethers, the following illustrates how one can interact with PolygonRegistr
 
 ## Loading the Contract
 
-```
+```js
 const ethers = require('ethers');
 const url = https://rpc-mumbai.matic.today; // For matic testnet
 const DID_ADDRESS = `<Contract Address>`;
@@ -34,26 +34,25 @@ let registry = new ethers.Contract(DID_ADDRESS, <Contract ABI>, wallet);
 
 ## Creating a DID
 
-```
+```js
 let returnHashValues = await registry.functions.createDID(<DID address>, DidDoc);
 ```
 
 ## Updating a DID
 
-
-```
+```js
 let returnHashValues = await registry.functions.updateDID(<DID address>, DidDoc)
 ```
 
 ## Delete a DID
 
-```
+```js
 let returnHashValues = await registry.functions.deleteDID(<DID address>)
 ```
 
 ## Resolving a DID 
 
-```
+```js
 let returnDidDoc = await registry.functions.getDID(<DID address>);
 ```
 
@@ -98,14 +97,18 @@ ganache-cli
 
 Update your mnemonic in truffle-config.js
 
-```
+```js
 const mnemonic = <Place your mnemonic here>;
 ```
 
 On a new console window run
-
+Polygon testnet
 ```
 truffle migrate --network matic
+```
+Polygon mainnet
+```
+truffle migrate --network matic_mainnet
 ```
 
 ## Testing
